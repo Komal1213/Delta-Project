@@ -1,0 +1,18 @@
+<% layout("/layouts/boilerplate") %>
+<h4>Top Vacation Spots to Visit in <%=country%></h4>
+<% if(listings.length >0){ %>
+        <div class="row  row-cols-lg-2 row-cols-md-1 row-cols-sm-1">
+            <% listings.forEach(function(listing){ %>
+                
+                <div class="card col listing-card">
+                    <img src="<%=listing.image.url%>"   class="card-img-top" style="height:23rem; width:28rem; border-radius:1.6rem;"   alt="listing_image">
+                    <h5><b><%=listing.title%></b></h5>
+                    <p><%=listing.description%></p>
+                    &#8377;<%=listing.price.toLocaleString("en-IN")%> /night
+                    <p>Location:&nbsp; <%=listing.location %></p>
+                        
+                </div>
+            <%})%>
+        </div>
+<%}%>
+
