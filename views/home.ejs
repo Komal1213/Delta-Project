@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="text-center mt-5">
+    <h1> Welcome to Vacation Vibes! </h1>
+    <p class="lead">Find your perfect vacation stay around the world.</p>
+    <% if (!currUser) { %>
+        <a href="/signup" class="btn btn-primary mt-3">Get Started</a>
+    <% } else { %>
+        <a href="/listings" class="btn btn-success mt-3">Explore Listings</a>
+    <% } %>
+</div>

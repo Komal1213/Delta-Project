@@ -73,13 +73,18 @@ const sessionOptions={
         httpOnly: true,
     }
 };
+store.on("create", () => {
+    console.log("Mongo store created");
+    });
+
+store.on("destroy", () => {
+    console.log("Mongo store destroyed");
+});
 
 
 // app.get("/",(req,res)=>{
 //     res.send("Hi, I am root");
 // });
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -90,9 +95,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 //app.use(flash()) will be written before the routes are required as it will be used with the help of  routes.and now will define a middleware for flash
 app.use((req,res,next)=>{
+    console.log("Current user:", req.user?.username || "Not logged in");
+
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");  //success is like the key that has value as new listing created in listing.js create route
     res.locals.currUser = req.user;
@@ -101,6 +107,9 @@ app.use((req,res,next)=>{
  });
 
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the home page!"); // or render a view, like res.render('index.ejs')
+});
 //TRYING MY OWN CODE FOR SEARCH BAR FUNCTIONALITY actually this code will be shifted and modifies in routes listing.js but want to keep it here but commenting
 // app.get("/listings/search",async(req,res)=>{
 //     //console.log(req.query);
@@ -152,6 +161,9 @@ app.use((err,req,res,next)=>{
 //     res.send("successful");
 // })
 
+app.get("/", (req, res) => {
+    res.render('home');
+});
 
 
 
