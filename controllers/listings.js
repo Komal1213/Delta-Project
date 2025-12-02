@@ -2,7 +2,8 @@ const Listing = require("../models/listing");
 
 module.exports.index = async(req,res)=>{
     const allListings =await Listing.find({});
-    res.render("listings/index",{allListings});
+    //making changes here as index.ejs to index for working the project
+    res.render("listings/index",{allListings});         
 }
 
 module.exports.renderNewForm = (req,res)=>{
