@@ -56,7 +56,7 @@ const store = MongoStore.create({
     },
     touchAfter: 24*3600,
 });
-store.on("error",()=>{
+store.on("error",(err)=>{
     console.log("Error in MONGO SESSION STORE",err);
 })
 
@@ -140,6 +140,9 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
+app.get("/", (req, res) => {
+    res.render('home');
+});
 
 //error handling in case any error occur but it will not disturb the functioning just will give message
 app.all("*",(req,res,next)=>{
@@ -164,9 +167,7 @@ app.use((err,req,res,next)=>{
 //     res.send("successful");
 // })
 
-app.get("/", (req, res) => {
-    res.render('home');
-});
+
 
 
 
