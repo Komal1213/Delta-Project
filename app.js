@@ -107,9 +107,12 @@ app.use((req,res,next)=>{
  });
 
 
-app.get("/", (req, res) => {
-    res.render("listings/index.ejs"); // or render a view, like res.render('index.ejs')
-});
+//  COMMENTING THE NEXT LINES AS ALSREADY HAVING / ..THEN THESE TWO ROUTES WILL FIRGHT AND NOT REACHES THE LISTINGS
+// app.get("/", (req, res) => {
+//     res.render("listings/index.ejs"); // or render a view, like res.render('index.ejs')
+// });
+
+
 //TRYING MY OWN CODE FOR SEARCH BAR FUNCTIONALITY actually this code will be shifted and modifies in routes listing.js but want to keep it here but commenting
 // app.get("/listings/search",async(req,res)=>{
 //     //console.log(req.query);
